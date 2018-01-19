@@ -4,5 +4,5 @@ CREATE TABLE users (
     name_last TEXT,
     email TEXT,
     gender TEXT,
-    auth_id TEXT
+    auth_id INTEGER
 );

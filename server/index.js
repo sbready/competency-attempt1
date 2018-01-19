@@ -10,7 +10,7 @@ const express = require('express')
 const app = express()
 
 app.use( cors() )
-app.use( bodyParser.json() )
+app.use( bodyParser.json() )                         //76F
 
 massive( process.env.DB_CONNECTION ).then( db => {   //74C
     app.set( 'db', db )                              //70C
@@ -75,8 +75,11 @@ app.get( '/auth/logout', function( req, res) {
 
 //endpoints
 const controller = require('./controllers/controller')
-
-app.get( '/api/infocatch', controller.info_catch )
+                                                                //76C
+app.get( '/api/infocatch', controller.info_catch )              //74D-1
+app.post( '/api/infocatch', controller.create )                 //74D-2
+app.put( '/api/infocatch/:id', controller.update )              //74D-3
+app.delete('/api/infocatch/:id', controller.delete )            //74D-4
 
 
 passport.serializeUser( function ( ID, done ) {
