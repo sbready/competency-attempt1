@@ -1,3 +1,7 @@
+
+let id = 0;
+let text = [];
+
 module.exports = {
 
     info_catch ( req, res ) {
@@ -6,26 +10,26 @@ module.exports = {
     },
 
     create (req, res) {
-        let info_catch = {
+        let newInfo = {
             id: id,
             text: req.body.text
         }
+        id++;
+        text.push(newInfo)
+        res.status(200).send(text)
     },
 
     update(req, res){
-        let id = (req.params.id, 10) * 1
-        let m = []
-        let messages1 = m.filter( function( m ) {
-            return m.id === id
+        let id = parseInt(req.params.id, 10)
+        let newInfo = text.filter( function(text) {
+            return text.id === id;
         })
+        newInfo[0].text = req.body.text
     },
 
     delete(req,res) {                                           //76D
-        let id = (req.params.id, 10) * 1
-        let m = []
-        m = m.filter( (m) => {
-            m.id !== id
-        })
-        res.status(200).send(m)
+        let id = parseInt(req.params.id, 5)
+        text = text.filter( text => text.id !== id) 
+        res.status(200).send(text)
     }
 }
