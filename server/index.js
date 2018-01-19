@@ -76,7 +76,8 @@ app.get( '/auth/logout', function( req, res) {
 //endpoints
 const controller = require('./controllers/controller')
                                                                 //76C
-app.get( '/api/infocatch', controller.info_catch )              //74D-1
+app.get( '/api/infocatch', controller.read )                    //74D-1
+app.get( '/api/car/:make', controller.read2 )                   //76E
 app.post( '/api/infocatch', controller.create )                 //74D-2
 app.put( '/api/infocatch/:id', controller.update )              //74D-3
 app.delete('/api/infocatch/:id', controller.delete )            //74D-4

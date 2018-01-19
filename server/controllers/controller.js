@@ -4,9 +4,15 @@ let text = [];
 
 module.exports = {
 
-    info_catch ( req, res ) {
-        let user = db.find_user()                               //76E
+    read ( req, res ) {
+        let user = req.query.                             //76E
         res.status( 200 ).send( user )
+    },
+
+    read2 ( req, res ) {
+        var make = req.query.make
+        console.log(make)
+        res.send(make.getMake("accord"))
     },
 
     create (req, res) {
